@@ -29,26 +29,16 @@ End.
 But instead, the output looks like this on startup:
 
 ```
-DEBUG [2022-10-11 23:53:41] Filtering colA
-DEBUG [2022-10-11 23:53:41] Getting unique colB
-DEBUG [2022-10-11 23:53:41] Filtering colB
-DEBUG [2022-10-11 23:53:41] Getting unique colC
-DEBUG [2022-10-11 23:53:41] Filtering colC
-DEBUG [2022-10-11 23:53:41] Getting unique colD
-DEBUG [2022-10-11 23:53:41] Filtering colD
-DEBUG [2022-10-11 23:53:41] Getting unique colE
-DEBUG [2022-10-11 23:53:42] Filtering colB
-DEBUG [2022-10-11 23:53:42] Getting unique colC
-DEBUG [2022-10-11 23:53:42] Filtering colC
-DEBUG [2022-10-11 23:53:42] Getting unique colD
-DEBUG [2022-10-11 23:53:42] Filtering colD
-DEBUG [2022-10-11 23:53:42] Getting unique colE
-DEBUG [2022-10-11 23:53:42] Filtering colC
-DEBUG [2022-10-11 23:53:42] Getting unique colD
-DEBUG [2022-10-11 23:53:42] Filtering colD
-DEBUG [2022-10-11 23:53:42] Getting unique colE
-DEBUG [2022-10-11 23:53:42] Filtering colD
-DEBUG [2022-10-11 23:53:42] Getting unique colE
+DEBUG [2022-10-12 00:02:59] Getting unique colB to set selectInput choices
+DEBUG [2022-10-12 00:02:59] Getting unique colC to set selectInput choices
+DEBUG [2022-10-12 00:02:59] Getting unique colD to set selectInput choices
+DEBUG [2022-10-12 00:02:59] Getting unique colE to set selectInput choices
+DEBUG [2022-10-12 00:02:59] Getting unique colC to set selectInput choices
+DEBUG [2022-10-12 00:02:59] Getting unique colD to set selectInput choices
+DEBUG [2022-10-12 00:03:00] Getting unique colE to set selectInput choices
+DEBUG [2022-10-12 00:03:00] Getting unique colD to set selectInput choices
+DEBUG [2022-10-12 00:03:00] Getting unique colE to set selectInput choices
+DEBUG [2022-10-12 00:03:00] Getting unique colE to set selectInput choices
 ```
 
 Each input triggers refresh of the inputs below it in the hierarchy, such that
