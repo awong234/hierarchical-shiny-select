@@ -2,7 +2,7 @@
 
 The book "Mastering Shiny" has a section on hierarchical select boxes, for the
 purpose of drilling down into a dataset across multiple categories. This is
-desribed
+described
 [here](https://mastering-shiny.org/action-dynamic.html#hierarchical-select).
 
 The structure here reproduces that strategy, but with a larger dataset, with
