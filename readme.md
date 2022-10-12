@@ -58,6 +58,14 @@ the data are filtered on the value in colD 4 times).
 **Is there a better scheme that minimizes how many inputs need to be refreshed in
 the hierarchy?**
 
+I've attempted instead to use a combination of `renderUI` and `uiOutput`, and on
+each `renderUI` instance, setting `bindEvent` to the category above it in the
+hierarchy (to be displayed in `app2.R` when ready). This solution is faster, but
+has its own problems; if a value is valid for, say colB, when colA is changed,
+anything dependent on colB further down the hierarchy will not refresh and we
+end up with potentially invalid levels for C, D, and E.
+
+
 ## Running the app
 
 The project dependencies are defined by renv; use `renv::restore()` to install
