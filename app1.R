@@ -4,7 +4,7 @@ library(dplyr)
 library(RSQLite)
 library(DBI)
 
-local(source("create_data.R", local = TRUE))
+# local(source("create_data.R", local = TRUE))
 
 logger::log_threshold(DEBUG)
 
@@ -66,16 +66,16 @@ server <- function(input, output, session) {
     output$stack = renderText({
         paste0("Order of events\n", paste0("Update ", stack(), collapse = "\n"))
     })
+    stack = reactiveVal('start')
+    push = function(stack, add) {
+        c(stack(), add)
+    }
     # Reactive to obtain data at A level
     A_lvl = reactive({
         log_trace("Filtering colA")
         df |> filter(colA == !!input$colA)
     })
     # Set choices for B
-    stack = reactiveVal('start')
-    push = function(stack, add) {
-        c(stack(), add)
-    }
     log_event = function(letter, stack) {
         last_stack = tail(stack(), 1)
         log_debug("Getting unique col{letter} to set selectInput choices: coming from {last_stack}")
