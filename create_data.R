@@ -1,9 +1,10 @@
-library(RSQLite)
+library(duckdb)
 library(DBI)
+library(dplyr)
 
 con = dbConnect(
-    RSQLite::SQLite(),
-    'data.db'
+    duckdb::duckdb(),
+    'data_duck.db'
 )
 
 df = list(
@@ -32,7 +33,7 @@ df = df |>
            ! (colD == "D1" & colE == "E1")
            )
 attr(df, 'out.attrs') = NULL
-df_dup = replicate(n = 1000, df, simplify = FALSE)
+df_dup = replicate(n = 100000, df, simplify = FALSE)
 df = bind_rows(df_dup)
 dbWriteTable(con, "table", df, overwrite = TRUE)
-dbDisconnect(con)
+dbDisconnect(con, shutdown = TRUE)

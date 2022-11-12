@@ -9,8 +9,8 @@ library(DBI)
 logger::log_threshold(DEBUG)
 
 con = dbConnect(
-    RSQLite::SQLite(),
-    'data.db'
+    duckdb::duckdb(),
+    'data_duck.db'
 )
 
 df = tbl(con, 'table')
@@ -60,8 +60,8 @@ server <- function(input, output, session) {
     })
     output$total_rows = renderText({
         nrows = df |> count() |> collect() |> pull(n)
-        size = fs::dir_info(glob = "data.db")[['size']]
-        paste0("Dataset has ", nrows, " rows (", size, " on disk)")
+        size = fs::dir_info(glob = "data_duck.db")[['size']]
+        paste0("Dataset has ", format(nrows, big.mark = ","), " rows (", size, " on disk)")
     })
     output$stack = renderText({
         paste0("Order of events\n", paste0("Update ", stack(), collapse = "\n"))
